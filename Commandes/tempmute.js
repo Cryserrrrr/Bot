@@ -3,9 +3,6 @@ const ms = require("ms");
 
 module.exports.run = async (client, message, args) => {
 
-  //!tempmute @user 1s/m/h/d
-
-  // get correct user id on mention because the input retrieve " <@!547935154094604288> " instead of 547935154094604288
   let mention = ''
   if (args[0]) {
     mention = args[0]
@@ -21,7 +18,6 @@ module.exports.run = async (client, message, args) => {
   if(tomute.hasPermission("MANAGE_MESSAGES")) return message.reply("Tu ne peux pas le mute !");
 
   let muterole = message.guild.roles.cache.find(r => r.name === 'muted');
-  //start of create role
   if(!muterole){
     try{
       muterole = await message.guild.roles.create({
@@ -42,7 +38,6 @@ module.exports.run = async (client, message, args) => {
       console.log(e.stack);
     }
   }
-  //end of create role
 
   let mutetime = args[1];
   if(!mutetime) return message.reply("Vous devez spécifier un temps !");
@@ -58,7 +53,6 @@ module.exports.run = async (client, message, args) => {
   }, delay);
 
 
-//end of module
 }
 
 module.exports.help = {
