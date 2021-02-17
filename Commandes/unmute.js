@@ -3,7 +3,6 @@ const Discord = require('discord.js')
 module.exports.run = async (client, message, args) => {
     if(!message.member.hasPermission("MANAGE_MESSAGES")) return message.channel.sendMessage("Vous n'avez pas la permission !")
 
-        // get correct user id on mention because the input retrieve " <@!547935154094604288> " instead of 547935154094604288
         let mention = ''
         if (args[0]) {
           mention = args[0]
